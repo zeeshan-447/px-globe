@@ -1,7 +1,7 @@
 {
-  "name": "pandemic-globe",
+  "name": "packagex-globe",
   "version": "0.0.2",
-  "description": "Pandemic information projected on a globe map",
+  "description": "Package Globe to display information of packages",
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -10,8 +10,8 @@
     "start": "webpack serve webpack-dev-server --open --config=webpack.dev.js"
   },
   "keywords": [
-    "pandemic",
-    "covid",
+    "packagex",
+    "receive",
     "3d",
     "threejs"
   ],
