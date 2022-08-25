@@ -1,5 +1,5 @@
 import ThreeGlobe from "three-globe";
-import { WebGLRenderer, Scene } from "three";
+import { WebGLRenderer, Scene, ShaderMaterial, Vector2 } from "three";
 import {
   PerspectiveCamera,
   AmbientLight,
@@ -49,7 +49,7 @@ function init() {
   camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
 
-  var dLight = new DirectionalLight(0xfcf003, 2);
+  var dLight = new DirectionalLight(0xfcf003, 1);
   dLight.position.set(-800, 2000, 400);
   camera.add(dLight);
 
@@ -143,7 +143,7 @@ function initGlobe() {
   // for (let i = 0; i <= airportHistory.airports.length; i++) {
   setTimeout(() => {
     Globe.labelsData(airportHistory.airports)
-      .labelColor(() => "#F25252")
+      .labelColor(() => "#1BF2A3")
       .labelDotOrientation((e) => {
         return e.text === "ALA" ? "top" : "right";
       })
@@ -153,11 +153,10 @@ function initGlobe() {
       .labelResolution(6)
       .labelAltitude(0.01)
       .pointsData(airportHistory.airports)
-      .pointColor(() => ["#7420E2"], ["#101023"])
+      .pointColor(() => "#EBEDF2")
       .pointsMerge(true)
       .pointAltitude(0.15)
-      .pointRadius(0.2)
-      .pointsTransitionDuration(6000);
+      .pointRadius(0.2);
   }, 1000);
 
   Globe.rotateY(-Math.PI * (5 / 9));
@@ -189,11 +188,11 @@ function onWindowResize() {
 }
 
 function animate() {
-  camera.position.x +=
-    Math.abs(mouseX) <= windowHalfX / 2
-      ? (mouseX / 2 - camera.position.x) * 0.005
-      : 0;
-  camera.position.y += (-mouseY / 2 - camera.position.y) * 0.005;
+  // camera.position.x +=
+  //   Math.abs(mouseX) <= windowHalfX / 2
+  //     ? (mouseX / 2 - camera.position.x) * 0.005
+  //     : 0;
+  // camera.position.y += (-mouseY / 2 - camera.position.y) * 0.005;
   camera.lookAt(scene.position);
   controls.update();
   renderer.render(scene, camera);
